@@ -5,6 +5,8 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain import hub
 import os
 import logging
+from dotenv import load_dotenv
+load_dotenv()
 logging.basicConfig(level=logging.DEBUG)
 
 
