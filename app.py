@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify, Response
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_ollama.llms import OllamaLLM
 from langchain_core.output_parsers import StrOutputParser
+from langchain import hub
 import os
 import logging
 logging.basicConfig(level=logging.DEBUG)
@@ -11,10 +12,7 @@ app = Flask(__name__)
 
 # Initialize LangChain components
 parser = StrOutputParser()
-template = """Question: {question}
-
-Answer: Let's think step by step."""
-prompt = ChatPromptTemplate.from_template(template)
+prompt = hub.pull("pet")
 model = OllamaLLM(model="nemotron-mini",base_url=os.getenv("OLLAMA_BASE_URL"))
 chain = prompt | model | parser
 
