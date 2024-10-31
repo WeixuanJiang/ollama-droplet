@@ -13,7 +13,7 @@ app = Flask(__name__)
 # Initialize LangChain components
 parser = StrOutputParser()
 prompt = hub.pull("pet")
-model = OllamaLLM(model="nemotron-mini",base_url=os.getenv("OLLAMA_BASE_URL"))
+model = OllamaLLM(model=os.getenv("nemotron-mini"),base_url=os.getenv("OLLAMA_BASE_URL"))
 chain = prompt | model | parser
 
 def generate_stream_response(question):

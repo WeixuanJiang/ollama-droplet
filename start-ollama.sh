@@ -1,5 +1,6 @@
 #!/bin/sh
-
+source .env
+echo $MODEL
 # Start the ollama server in the background
 ollama serve &
 
@@ -7,5 +8,5 @@ ollama serve &
 sleep 5
 
 # Pull the nemotron-mini model
-ollama pull nemotron-mini
+ollama pull $MODEL
 wait
